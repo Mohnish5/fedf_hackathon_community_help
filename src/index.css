@@ -8,29 +8,30 @@
   /* Teal 800 */
   --secondary: #0EA5E9;
   /* Sky 500 */
-  --accent: #F43F5E;
-  /* Rose 500 */
-
-  /* Neutral Colors */
-  --bg-main: #0F172A;
-  /* Slate 900 */
-  --bg-card: #1E293B;
-  /* Slate 800 */
-  --text-main: #F8FAFC;
-  /* Slate 50 */
-  --text-muted: #94A3B8;
-  /* Slate 400 */
-  --border: #334155;
-  /* Slate 700 */
-
-  /* Spacing & Radius */
+  /* Premium Dark Theme Palette */
+  --bg-main: #0f172a;
+  --bg-card: rgba(30, 41, 59, 0.7);
+  /* Glassy card background */
+  --primary: #8b5cf6;
+  /* Violet */
+  --primary-glow: rgba(139, 92, 246, 0.5);
+  --secondary: #0ea5e9;
+  /* Sky Blue */
+  --accent: #f43f5e;
+  /* Rose */
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --border: rgba(148, 163, 184, 0.1);
   --radius-sm: 0.5rem;
   --radius-md: 0.75rem;
   --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
 
-  /* Animations */
-  --transition-fast: 0.2s ease;
-  --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Glassmorphism */
+  --glass-bg: rgba(15, 23, 42, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --backdrop-blur: blur(12px);
 
   font-family: 'Outfit', sans-serif;
   line-height: 1.5;

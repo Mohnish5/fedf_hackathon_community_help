@@ -4,6 +4,7 @@ import { Hero } from './components/Hero';
 import { RequestCard } from './components/RequestCard';
 import { CreateRequestModal } from './components/CreateRequestModal';
 import { ContactModal } from './components/ContactModal';
+import { RequestDetailsModal } from './components/RequestDetailsModal';
 import { Footer } from './components/Footer';
 import { Search, Filter } from 'lucide-react';
 import './App.css';
@@ -59,6 +60,8 @@ function App() {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [contactModalOpen, setContactModalOpen] = useState(false);
   const [selectedContactUser, setSelectedContactUser] = useState('');
+  const [detailsModalOpen, setDetailsModalOpen] = useState(false);
+  const [selectedRequest, setSelectedRequest] = useState(null);
 
   const handlePostRequest = (newRequest) => {
     setRequests([newRequest, ...requests]);
@@ -72,6 +75,11 @@ function App() {
   const handleContact = (request) => {
     setSelectedContactUser(request.user);
     setContactModalOpen(true);
+  };
+
+  const handleOpenDetails = (request) => {
+    setSelectedRequest(request);
+    setDetailsModalOpen(true);
   };
 
   const filteredRequests = requests.filter(req => {
@@ -152,7 +160,12 @@ function App() {
           <div className="grid-feed">
             {filteredRequests.length > 0 ? (
               filteredRequests.map(req => (
-                <RequestCard key={req.id} request={req} onContact={handleContact} />
+                <RequestCard
+                  key={req.id}
+                  request={req}
+                  onContact={handleContact}
+                  onClick={() => handleOpenDetails(req)}
+                />
               ))
             ) : (
               <div style={{ gridColumn: '1/-1', textAlign: 'center', padding: '4rem', color: 'var(--text-muted)' }}>
@@ -174,6 +187,16 @@ function App() {
         isOpen={contactModalOpen}
         onClose={() => setContactModalOpen(false)}
         user={selectedContactUser}
+      />
+
+      <RequestDetailsModal
+        isOpen={detailsModalOpen}
+        onClose={() => setDetailsModalOpen(false)}
+        request={selectedRequest}
+        onContact={(req) => {
+          setDetailsModalOpen(false);
+          handleContact(req);
+        }}
       />
 
       <Footer />
